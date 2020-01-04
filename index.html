@@ -21,7 +21,9 @@
     <!--Font Awesome-->
     <script src="https://kit.fontawesome.com/37ac476e4a.js" crossorigin="anonymous"></script>
     <!--My Stylesheets-->
-    <link rel="stylesheet" href="index.html">
+    <link rel="stylesheet" href="style.css">
+    <!--JQuery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -35,9 +37,10 @@
             <div class="col-md-3">
                 <div class="row">
                     <div class="input-group mb-3 col-md-12">
-                        <input type="text" class="form-control" aria-label="City">
+                        <!--City Input-->
+                        <input type="text" class="form-control" id="city" aria-label="City">
                         <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" type="button" id="button-addon2"><i
+                            <button class="btn btn-outline-secondary" id="search" type="button" id="button-addon2"><i
                                     class="fas fa-search"></i></button>
                         </div>
                     </div>
