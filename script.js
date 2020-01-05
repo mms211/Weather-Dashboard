@@ -1,7 +1,22 @@
+// 
+var thunderstorm = $("<i class=fas fa-bolt></i>");
+//var drizzle = <i class="fas fa-cloud-rain"></i>;
+//var rain = <i class="fas fa-cloud-showers-heavy"></i>;
+//var snow = <i class="far fa-snowflake"></i>;
+//var mist = <i class="fas fa-smog"></i>;
+//var smoke = ;
+//var haze = ;
+//var dust = ;
+//var fog = ;
+//var sand = ;
+//var ash = ;
+//var squall = ;
+//var tornado = <i class="fas fa-wind"></i>;
+//var clear = <i class="far fa-sun"></i>;
+//var clouds = <i class="fas fa-cloud"></i>;
+
 $("#search").on("click", function currentWeather() {
-    console.log("you clicked me!");
     var city = $("#city").val();
-    console.log(city);
 
     // AJAX call for current weather 
     var queryURL1 = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=456a54d6b9485de0873f0e16f7e15315";
@@ -11,14 +26,13 @@ $("#search").on("click", function currentWeather() {
         method: "GET"
     }).then(function (response) {
         console.log(response);
+        var todaysWeather = "";
         var longitude = response.coord.lon;
-        console.log(longitude);
         var latitude = response.coord.lat;
-        console.log(latitude);
         var cityName = response.name;
-        localStorage.setItem(cityName, cityName);
-        localStorage.getItem(cityName)
         var date = response.dt;
+        var weather = response.weather[0].main;
+        console.log(weather);
         var temp = response.main.temp;
         var humidity = response.main.humidity;
         var windSpeed = response.wind.speed;
@@ -32,12 +46,15 @@ $("#search").on("click", function currentWeather() {
             method: "GET"
         }).then(function (response) {
             console.log(response);
-            var uvIndex = response.value;
+            uvIndex = response.value;
             console.log(uvIndex);
+            todaysWeather.append($("<p>UV Index: " + uvIndex + "</p>"));
         });
 
-        $("#current-city").html(cityName + " (" + dateString + ")");
-
+        todaysWeather = $("#current-city").html("<h2>" + cityName + " (" + dateString + ")</h2><br>");
+        todaysWeather.append($("<p>Temperature: " + temp + "F</p>"));
+        todaysWeather.append($("<p>Humidity: " + humidity + "%</p>"));
+        todaysWeather.append($("<p>Wind Speed: " + windSpeed + " MPH</p>"));
     });
 
 });
@@ -53,6 +70,7 @@ $("#search").on("click", function fiveDayForcast() {
         method: "GET"
     }).then(function (response) {
         console.log(response);
+
 
     });
 

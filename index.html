@@ -30,13 +30,13 @@
 
 <body>
     <!--Header-->
-    <nav class="navbar navbar-light bg-light">
-        <span class="navbar-brand mb-0 h1">Navbar</span>
-    </nav>
+    <div id="header-box" class="container-fluid" >
+        <h1 id="header-text">Weather Dashboard</h1>
+    </div>
     <main class="container-fluid">
         <div class="row">
             <!--Left Sidebar-->
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div class="row">
                     <div class="input-group mb-3 col-md-12">
                         <!--City Input-->
@@ -52,43 +52,34 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-md-9">
+            <div class="col-md-8">
                 <!--Location Current Weather-->
-                <div class="row">
-                    <div class="card col-md-12">
+                <div class="container-fluid">
+                    <div id="current-weather-card" class="card col-md-12">
                         <div class="card-body">
                             <div id="current-city"></div>
 
                         </div>
                     </div>
                 </div>
-                <!--5 Day Forcast-->
+                <!--5 Day Forecast-->
+                <h3>5 Day Forecast:</h3>
                 <div class="container-fluid">
                     <div class="card-deck">
                         <div class="card text-white bg-primary">
-                            <div class="card-body">
-                                This is some text within a card body.
-                            </div>
+                            <div class="card-body"></div>
                         </div>
                         <div class="card text-white bg-primary">
-                            <div class="card-body">
-                                This is some text within a card body.
-                            </div>
+                            <div class="card-body"></div>
                         </div>
                         <div class="card text-white bg-primary">
-                            <div class="card-body">
-                                This is some text within a card body.
-                            </div>
+                            <div class="card-body"></div>
                         </div>
                         <div class="card text-white bg-primary">
-                            <div class="card-body">
-                                This is some text within a card body.
-                            </div>
+                            <div class="card-body"></div>
                         </div>
                         <div class="card text-white bg-primary">
-                            <div class="card-body">
-                                This is some text within a card body.
-                            </div>
+                            <div class="card-body"></div>
                         </div>
                     </div>
                 </div>
