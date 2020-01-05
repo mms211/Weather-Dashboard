@@ -11,12 +11,12 @@
 }
 
 #current-weather-card {
-    height: 350px;
+    height: 300px;
     margin-bottom: 15px;
 }
 
 .card-body {
-    height: 150px;
+    min-height: 150px;
 }
 
 h3 {
