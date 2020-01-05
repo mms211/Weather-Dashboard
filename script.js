@@ -1,5 +1,5 @@
 // 
-var thunderstorm = $("<i class=fas fa-bolt></i>");
+//var thunderstorm = $("<i class=fas fa-bolt></i>");
 //var drizzle = <i class="fas fa-cloud-rain"></i>;
 //var rain = <i class="fas fa-cloud-showers-heavy"></i>;
 //var snow = <i class="far fa-snowflake"></i>;
@@ -51,7 +51,7 @@ $("#search").on("click", function currentWeather() {
             todaysWeather.append($("<p>UV Index: " + uvIndex + "</p>"));
         });
 
-        todaysWeather = $("#current-city").html("<h2>" + cityName + " (" + dateString + ")</h2><br>");
+        todaysWeather = $("#current-city").html("<h2>" + cityName + " (" + dateString + ") " + weather + "</h2><br>");
         todaysWeather.append($("<p>Temperature: " + temp + "F</p>"));
         todaysWeather.append($("<p>Humidity: " + humidity + "%</p>"));
         todaysWeather.append($("<p>Wind Speed: " + windSpeed + " MPH</p>"));
@@ -60,7 +60,7 @@ $("#search").on("click", function currentWeather() {
 });
 
 
-$("#search").on("click", function fiveDayForcast() {
+$("#search").on("click", function fiveDayForecast() {
     var city = $("#city").val();
     var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&units=imperial&appid=456a54d6b9485de0873f0e16f7e15315";
     
@@ -70,6 +70,25 @@ $("#search").on("click", function fiveDayForcast() {
         method: "GET"
     }).then(function (response) {
         console.log(response);
+        for(var iteration = 0; iteration < response.list.length; iteration = iteration + 8) {
+            console.log(iteration);
+            var date1 = response.list[iteration].dt;
+            var dateString1 = moment.unix(date1).format("MM/DD/YYYY");
+            console.log(dateString1);
+            var weather1 = response.list[iteration].weather[0].main;
+            console.log(weather1);
+            var temp1 = response.list[iteration].main.temp;
+            console.log(temp1);
+            var humidity1 = response.list[iteration].main.humidity;
+            console.log(humidity1);
+
+            var currentDay = $("#" + iteration);
+            console.log(currentDay);
+            var fiveDay = currentDay.html("<h6>" + dateString1 + "</h6>");
+            fiveDay.append($("<p>" + weather1 + "</p>"));
+            fiveDay.append($("<p>Temp: " + temp1 + "F</p>"));
+            fiveDay.append($("<p>Humidity: " + humidity1 + "%</p>"));
+        };
 
 
     });
