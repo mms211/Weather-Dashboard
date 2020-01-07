@@ -23,3 +23,12 @@ h3 {
     margin-bottom: 15px;
     margin-left: 15px;
 }
+
+#searches {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+#previous-search {
+    margin-left: 25px;
+}

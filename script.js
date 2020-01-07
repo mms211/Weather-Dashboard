@@ -1,15 +1,8 @@
+var cityArray = [];
 var weather = "";
 var iconPlaceholder = "";
 var weather1 = "";
-
-if ("geolocation" in navigator){ //check geolocation available 
-	//try to get user current location using getCurrentPosition() method
-	navigator.geolocation.getCurrentPosition(function(position){ 
-			console.log("Found your location \nLat : "+position.coords.latitude+" \nLang :"+ position.coords.longitude);
-		});
-}else{
-	console.log("Browser doesn't support geolocation!");
-};
+var city = "";
 
 function weatherIcon() {
     iconPlaceholder = $("<i></i>");
@@ -56,7 +49,7 @@ function weatherIcon1() {
 };
 
 function currentWeather() {
-    var city = $("#city").val();
+    city = $("#city").val();
 
     // AJAX call for current weather 
     var queryURL1 = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=456a54d6b9485de0873f0e16f7e15315";
@@ -89,6 +82,9 @@ function currentWeather() {
             uvIndex = response.value;
             todaysWeather.append($("<p>UV Index: " + uvIndex + "</p>"));
         });
+
+        //local storage
+        localStorage1();
 
         // current weather added to page
         todaysWeather = $("#current-city").html("<h2>" + cityName + " (" + dateString + ")</h2>");
@@ -130,16 +126,24 @@ function fiveDayForecast() {
     });
 };
 
-function localStorage() {
-    var cities;
-    if (localStorage.getItem("cities") === null) {
-        cities = [];
-    } else {
-        cities = JSON.parse(localStorage.getItem("cities"));
-    };
-    cities.push(city);
-    console.log(cities);
-};
+//Local Storage
+function localStorage1() {
+    //Local Storage Array
+    cityArray.push(city);
+    localStorage.setItem("cities", JSON.stringify(cityArray));
+
+    var search_history = JSON.parse(window.localStorage.getItem("cities"));
+    console.log("SEARCH HIS: ", search_history, typeof search_history);
+    console.log(cityArray);
+    // Set Local Storage to page
+    var previousSearch = $("#previous-search");
+    previousSearch.empty();
+    for (let i in search_history) {
+        console.log(search_history[i]);
+        previousSearch.append($("<li>" + search_history[i] + "</li>"));
+    }
+}
+
 
 // Call functions
 
